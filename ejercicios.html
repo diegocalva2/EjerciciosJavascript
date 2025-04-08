@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Fundamentos Javascript</title>
+  </head>
+
+  <body>
+    <h1>Fundamentos Javascript</h1>
+    <script>
+      /* **********     Curso JavaScript: 34 ejercicios logica de programacion (1/10) ********** 
+        
+  1) Programa una función que cuente el número de caracteres de una cadena de texto,
+   pe. miFuncion("Hola Mundo") devolverá 10.
+   
+   RESPUESTA: 
+    let cadena = "Hola Mundo";
+  
+  const contador=  function (){
+    console.log(cadena.length);
+    return cadena.length;
+  }
+  contador();
+  
+   2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
+   RESPUESTA: 
+   let cadena = "Hola Mundo";
+   const recortar = function(cadena,numero){
+    return cadena.slice(0,numero);
+  
+  }
+  let resultado = recortar(cadena,4);
+  console.log(resultado); 
+  
+  
+   3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
+   RESPUESTA:
+   let texto = "hola que tal";
+  
+   const separador = function (textoSeparado,caracter){
+    return textoSeparado.split(caracter);
+   }
+  console.log(separador(texto," "));
+  
+  */
+
+      /* **********     Curso JavaScript: 34 ejercicios logica de programacion (2/10) ********** 
+  
+  5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+  RESPUESTA: 
+  let texto = "hola mundo adios mundo en el mundo";
+  const voltear = (Paramtexto = "")=>{
+      if(!Paramtexto)
+  {
+      console.warn("no ingresaste una cadena");
+  }
+  else
+  {
+      return Paramtexto.split("").reverse().join("");}
+  
+  }
+       
+  console.log(voltear(texto));
+  
+  6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+  RESPUESTA: 
+  let texto = "hola mundo adios mundo en el mundo";
+     
+  console.log(voltear(texto));
+  
+  const valorRepetido = (textoGeneral,textoRepetido) =>{
+      if(!textoGeneral || !textoRepetido)
+  {
+      let error = console.warn("debes ingresar un texto y una palabra");
+      return error;
+  }
+  
+      let coincidencias = textoGeneral.match(new RegExp(`\\b${textoRepetido}\\b`, "gi"));
+      return   coincidencias ? coincidencias.length : 0;
+      
+  }
+  
+  console.log(valorRepetido(texto,"mundo"));
+  
+  7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+  RESPUESTAS:
+  const Palíndromo = (palabra) => {
+          if (!palabra) {
+            console.warn("no ingresaste una cadena");
+          } else {
+           palabra = palabra.toLowerCase();
+            let palabraComparación = palabra.split("").reverse().join("");
+            if (palabra === palabraComparación) {
+            return true;
+          } else {
+            return false;
+          }
+          }
+  
+          
+        };
+        console.log(Palíndromo("ana"));
+  
+  8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+  RESPUESTA:
+  
+  let patron = "xyz1, xyz2, xyz3, xyz4, xyz5,xyz";
+  
+  const eliminarPatron = (texto)=>
+  {
+      if(!texto)
+  {
+      console.warn("escribe un texto");
+  }
+  else{
+      let textoNuevo = texto.replace(/xyz/g," ");
+      return textoNuevo;
+  }
+     
+  
+  };
+  console.log(`este es el texto nuevo: ${eliminarPatron(patron)}`);
+  
+  
+  */
+
+      /* **********     Curso JavaScript: 34 ejercicios logica de programacion (3/10) ********** 
+  9) Programa una funcion que obtenga un numero aleatorio entre 501 y 600.
+        let numero;
+        const numeroRandom = (min, max) => {
+          if (!min || !max) {
+            console.warn("falto un parametro");
+          }
+          numero = Math.floor(Math.random() * (max - min + 1) + min);
+          return numero;
+        };
+        console.log(numeroRandom(501, 600));
+  
+  10) Programa una funcion que reciba un numero y evalue si es capicúa o no ( que se lee igual en un sentido que en otro)
+          pe. miFuncion(2002) devolvera true.
+          RESPUESTA:
+          const evaluarCoincidencia = (numero) => {
+            if (typeof numero !== "number" || numero ===0) {
+                console.warn("tiene que ingresar un numero como parametro y diferente a 0")
+                return false;
+            }
+
+            else {
+                let numeroEvaluado = numero.toString().split('').reverse().join('');
+                let numeroEvaluadoInt = parseInt(numeroEvaluado);
+                
+                if(numero ===numeroEvaluadoInt)
+            {
+
+                return true;
+
+            }
+            else{
+                return false;
+            }
+        };
+    };
+    console.log(evaluarCoincidencia(101));
+
+    11) Programa una función que calcule el factorial de un número (El factorial de 
+    un entero positivo n, se define como el producto de todos los numeros enteros positivos de 1 hasta n)
+    pe. miFuncion(5) devolvera 120:
+
+     const NumeroFactorial = (numero) => {
+        let resultado = 1;
+
+        if (typeof numero != "number" || !numero) {
+          console.warn("tiene que ingresar un numero en el parametro");
+          return false;
+        }
+
+        for (let i = numero; i > 0; i--) {
+          resultado*=i;
+        }
+        return resultado;
+      };
+
+      console.log(NumeroFactorial(4));
+
+      
+         
+      
+
+    /* **********     Curso JavaScript: 34 ejercicios logica de programacion (4/10) ********** 
+
+    12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+        RESPUESTA:
+        const numeroPrimo = (numero)=>
+ {
+    if(!numero || numero<=1)
+ {
+    console.warn("tiene que ingresar un numero mayor que uno");
+    return false;
+ }
+ 
+   
+    for(let i = 2; i<(numero-1);i++)
+ {
+    if(numero % i ===0)
+ {
+
+    return false;
+ }
+
+ }
+ return true;
+
+   }
+
+   console.log(numeroPrimo(2));
+
+13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+        RESPUESTA:
+        const parOImpar = (numero) => {
+        if (typeof numero !== "number" || numero <= 0) {
+            console.warn("tiene que ingresar un numero mayor que 0");
+            return;
+        }
+        return numero % 2 === 0
+        ? `el numero ${numero} es par` 
+        : `el numero ${numero} es impar`
+    }
+    console.log(parOImpar(29));
+14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+
+  RESPUESTA:
+   const ConvertidorTipoTemperatura = (numTemperatura, tipoTemperatura) => {
+        let temperaturaConvertida;
+          if (typeof numTemperatura !== "number" || numTemperatura === undefined || numTemperatura === null || typeof tipoTemperatura !== "string" || !tipoTemperatura) {
+            console.warn("tiene que ingresar un numero y la inicial del tipo de temperatura (celcius(C) y fahrenheit (F))");
+            return null;
+          }
+
+          else {
+            tipoTemperatura = tipoTemperatura.toLowerCase();
+            if (tipoTemperatura !== "c" && tipoTemperatura !== "f") {
+              console.warn("tienes que ingresar la inicial del tipo de temperatura (celcius(C) y fahrenheit (F))");
+              return null;
+            }
+            else 
+            {
+
+              switch (tipoTemperatura)
+              {
+                case "f":
+                  temperaturaConvertida = (numTemperatura -32)*0.555
+                  temperaturaConvertida = Math.round(temperaturaConvertida);
+                  return `la temperatura en celsius es ${temperaturaConvertida}`;
+                  break;
+
+                  case "c":
+                    temperaturaConvertida = (numTemperatura * 1.8) + 32
+                    temperaturaConvertida = Math.round(temperaturaConvertida);
+                    return `la temperatura en fahrenheit es ${temperaturaConvertida}`;
+                    break;
+                  default:
+                    return null;
+                    break;
+              }
+            }
+          }
+        }
+
+        console.log(ConvertidorTipoTemperatura(0,"f"));
+  
+
+            /* **********     Curso JavaScript: 34 ejercicios logica de programacion (5/10) **********
+        15) Programa una función para convertir numeros de base binaria a decimal y viceversa, pe.miFuncion(100,2) devolvera 4 base 10.
+
+        16) Programa una función que devuelva el monto final despues de aplicar un descuento a una cantidad dada, pe. miFuncion(1000,20)) devolvera 800.
+
+        17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el dia de hoy, pe.miFuncion(new Date(1984,23)) devolvera 35 años (en 2020)       
+  */
+
+      const pagoDescuento = (precio,descuento) => {
+        let precioFinal = 0;
+
+        if(typeof precio !=="number" || typeof descuento !=="number" )
+      {
+        console.warn("tiene que escribir el precio y el monto de descuento");
+        return null;
+
+      }
+      else
+      {
+        descuento = precio * (descuento/100);
+        precioFinal = precio - descuento;
+        
+        console.log(`el precio con el descuento es: ${precioFinal}`);
+        return true;
+
+
+      }
+
+        }
+
+        console.log(pagoDescuento(400,20))
+      
+   
+
+
+      </script>
+    </body>
+    
+    </html>
